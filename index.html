@@ -2,14 +2,11 @@
 <html lang="en" ng-app="storeWebApp">
 
   <head>
-
 	<!-- Meta-Information -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Teehugger Tees">
     <meta name="author" content="Teehugger Tees">
-    
-    <!-- testing custom meta-tags for data elements for test4. Test ends on line 19 -->
     <meta name="pagetype" content="{{pagetype}}">
 	<meta name="sitesection" content="{{sitesection}}">
 	<meta name="sitesubsection" content="{{sitesubsection}}">
@@ -32,19 +29,13 @@
     <!-- Vendor: Angular, followed by our custom Javascripts -->
 	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular.min.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular-route.min.js"></script>
-	
-	
-	<!-- Data Layer -->
-	
+		
+    <!-- Data Layer -->
 	<script>
 	digitalData = { 
 		page:{
 			pageName: document.title,
 			destinationURL: encodeURIComponent(window.location.href),
-			
-			/* START - adding this for test1. Remember to remove comma on line 31 if removing this test1 block later
-			REMOVED LITERAL STRING VALUES FOR PARAMS BELOW FOR TEST 3*/
-			
 			pageType: document.pagetype, 
 			siteSection: document.sitesection,
 			siteSubsection: document.sitesubsection,
@@ -53,47 +44,32 @@
 			revenue: document.revenue,
 			productTotalRevenue: document.producttotalrevenue,
 			productTotalUnits: document.producttotalunits,
-			purchaseID: "",
-			
-			/* END - test1 */
+			purchaseID: "", // 'PageCtrl' in $routeProvider sets to 'null' for non-checkout
 		}
 	};
 	</script>
 
 	<!-- Launch embed code -->
 	<script src="//assets.adobedtm.com/launch-EN1abd5a8792384701b09dcb2dfb58cc6a-development.min.js"></script>
-
-
-
-
   </head>
 
   <body>
-  
-
-	<!-- Website Content-->
+  	<!-- Website Content-->
 	<div ng-include="'templates/shop-header.html'"></div>
   	<!-- before <div ng-view=""></div> -->
   	<!-- trying this: -->
   	<div id="app" ng-view></div>
 	<div ng-include="'templates/shop-footer.html'"></div>
-	
-	
-	
-    <!-- Bootstrap core JavaScript -->
+		
+    	<!-- Bootstrap core JavaScript -->
 	<script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     
-	<!-- Our Website Javascripts -->
+	<!-- Website Javascript -->
 	<script src="js/shop-main.js"></script>
 	
-	<!-- removing this temporarily...
-	<script type="text/javascript">_satellite.track('page-view');</script>
-	-->
-	
 	<!-- Launch footer code -->
-	<script type="text/javascript">_satellite.pageBottom();</script>
-	
+	<script type="text/javascript">_satellite.pageBottom();</script>	
   </body>
 
 </html>
