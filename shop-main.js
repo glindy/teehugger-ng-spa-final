@@ -4,9 +4,6 @@
  */
 var app = angular.module('storeWebApp', ['ngRoute']);
 
-/** APP.CONFIG **/
-
-
 /** 
  * Configure the Routes
  */
@@ -131,15 +128,10 @@ app.config(['$routeProvider', function ($routeProvider) {
     
 }]);
 
-
-/* Location (test) */
+/* Location */
 app.config(['$locationProvider', function($locationProvider) {
   $locationProvider.hashPrefix('');
 }]);
-
-
-
-/** APP.RUN **/
 
 app.run(['$rootScope', '$route', function($rootScope, $route) { 
     $rootScope.$on('$routeChangeSuccess', function() {
@@ -189,9 +181,6 @@ app.run(['$rootScope', '$route', function($rootScope, $route) {
 	}); 
 	
 }]);
-
-/** APP.CONTROLLERS **/
-
 
 /**
  * Controls all non-Checkout pages)
@@ -323,7 +312,6 @@ app.controller('wvCheckoutCtrl', function($scope) {
   	  console.log("Womens V Checkout Controller reporting for duty.");
 });
 	
-
 /*  
 *  To set params on Buy Now button... not really using this yet
 */
