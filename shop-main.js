@@ -119,13 +119,11 @@ app.config(['$routeProvider', function ($routeProvider) {
 	.when("/my-account",  {templateUrl: "partials/my-account.html", controller: 'PageCtrl', title: 'My Account',
 		pageType: 'Form', siteSection: 'Account', siteSubsection: 'Login'})
 	.when("/new-account",  {templateUrl: "partials/new-account.html", controller: 'PageCtrl', title: 'Welcome',
-		pageType: 'Form', siteSection: 'Account', siteSubsection: 'Sign Up'})
-	   
+		pageType: 'Form', siteSection: 'Account', siteSubsection: 'Sign Up'})   
     /* else 404
     .otherwise({redirectTo: '#'});
     */
     .otherwise("/404", {templateUrl: "partials/404.html", controller: 'PageCtrl'});
-    
 }]);
 
 /* Location */
@@ -135,8 +133,7 @@ app.config(['$locationProvider', function($locationProvider) {
 
 app.run(['$rootScope', '$route', function($rootScope, $route) { 
     $rootScope.$on('$routeChangeSuccess', function() {
-        document.title = $route.current.title;
-        
+        document.title = $route.current.title;       
         // Set data layer variables (stored in meta tags)
         $rootScope.pageType = $route.current.pageType;
         $rootScope.siteSection = $route.current.siteSection;
@@ -145,29 +142,23 @@ app.run(['$rootScope', '$route', function($rootScope, $route) {
         $rootScope.productName = $route.current.productName;
         $rootScope.revenue = $route.current.revenue;
         $rootScope.productTotalRevenue = $route.current.productTotalRevenue;
-        $rootScope.productTotalUnits = $route.current.productTotalUnits;
-        
+        $rootScope.productTotalUnits = $route.current.productTotalUnits;        
     });
     
     // Set new params in view top (global page params)
 	$rootScope.$on('$routeChangeSuccess', function() { 
 		// Update Data Layer
 		digitalData.page.pageName = document.title;
-		digitalData.page.destinationURL = encodeURIComponent(window.location.href);
-		
+		digitalData.page.destinationURL = encodeURIComponent(window.location.href);		
 		// Update Data Layer
 		digitalData.page.pageType = $rootScope.pageType;
 		digitalData.page.siteSection = $rootScope.siteSection;
-		digitalData.page.siteSubsection = $rootScope.siteSubsection;
-			
+		digitalData.page.siteSubsection = $rootScope.siteSubsection;		
 		digitalData.page.productID = $rootScope.productID;
 		digitalData.page.productName = $rootScope.productName;
-		digitalData.page.revenue = $rootScope.revenue;
-			
+		digitalData.page.revenue = $rootScope.revenue;		
 		digitalData.page.productTotalRevenue = $rootScope.productTotalRevenue;
-		digitalData.page.productTotalUnits = $rootScope.productTotalUnits;
-		
-		
+		digitalData.page.productTotalUnits = $rootScope.productTotalUnits;				
 		// Custom Event - Event View Start - triggers AT call
 		var evt = new CustomEvent('event-view-start');
 		document.body.dispatchEvent(evt);
@@ -178,8 +169,7 @@ app.run(['$rootScope', '$route', function($rootScope, $route) {
 		// Custom Event - Event View End
 		var evt=new CustomEvent('event-view-end');
 		document.getElementById('app').dispatchEvent(evt);
-	}); 
-	
+	}); 	
 }]);
 
 /**
@@ -190,7 +180,6 @@ app.controller('PageCtrl', function (/* $scope, $location, $http */) {
 });
   
 /* Controls FAQ Page Panel */
-
 $(function () {
   $('#toggleAccordions').on('click', function(e) {
     $('.panel-collapse').collapse('toggle');
@@ -206,25 +195,20 @@ $(function () {
   	(function () {
     	$scope.bcPurchRNG = 'bc' + Math.random().toString(36).substr(2,9);
   		}
-  	());
-  	
+  	());	
   	var bcPurchaseID = $scope.bcPurchRNG;
-  	digitalData.page.purchaseID = bcPurchaseID;
-  	
+  	digitalData.page.purchaseID = bcPurchaseID;  	
   	  console.log("Baby Crew Checkout Controller reporting for duty.");
 });
-
 	// Baby V Controller
  app.controller('bvCheckoutCtrl', function($scope) { 
   $scope.bvPurchRNG = 0;
   	(function () {
     	$scope.bvPurchRNG = 'bv' + Math.random().toString(36).substr(2,9);
   		}
-  	());
-  	
+  	());	
   	var bvPurchaseID = $scope.bvPurchRNG;
-  	digitalData.page.purchaseID = bvPurchaseID;
-  	
+  	digitalData.page.purchaseID = bvPurchaseID;	
   	  console.log("Baby V Checkout Controller reporting for duty.");
 });
 
@@ -234,11 +218,9 @@ $(function () {
   	(function () {
     	$scope.kcPurchRNG = 'kc' + Math.random().toString(36).substr(2,9);
   		}
-  	());
-  	
+  	());  	
   	var kcPurchaseID = $scope.kcPurchRNG;
-  	digitalData.page.purchaseID = kcPurchaseID;
-  	
+  	digitalData.page.purchaseID = kcPurchaseID;  	
   	  console.log("Kids Crew Checkout Controller reporting for duty.");
 });
 	
@@ -248,11 +230,9 @@ $(function () {
   	(function () {
     	$scope.kvPurchRNG = 'kv' + Math.random().toString(36).substr(2,9);
   		}
-  	());
-  	
+  	()); 	
   	var kvPurchaseID = $scope.kvPurchRNG;
-  	digitalData.page.purchaseID = kvPurchaseID;
-  	
+  	digitalData.page.purchaseID = kvPurchaseID; 	
   	  console.log("Kids V Checkout Controller reporting for duty.");
 });
 
@@ -263,10 +243,8 @@ $(function () {
     	$scope.mcPurchRNG = 'mc' + Math.random().toString(36).substr(2,9);
   		}
   	());
-  	
   	var mcPurchaseID = $scope.mcPurchRNG;
-  	digitalData.page.purchaseID = mcPurchaseID;
-  	
+  	digitalData.page.purchaseID = mcPurchaseID; 	
   	  console.log("Mens Crew Checkout Controller reporting for duty.");
 });
 	
@@ -276,11 +254,9 @@ $(function () {
   	(function () {
     	$scope.mvPurchRNG = 'mv' + Math.random().toString(36).substr(2,9);
   		}
-  	());
-  	
+  	());  	
   	var mvPurchaseID = $scope.mvPurchRNG;
-  	digitalData.page.purchaseID = mvPurchaseID;
-  	
+  	digitalData.page.purchaseID = mvPurchaseID; 	
   	  console.log("Mens V Checkout Controller reporting for duty.");
 });
 
@@ -291,10 +267,8 @@ $(function () {
     	$scope.wcPurchRNG = 'wc' + Math.random().toString(36).substr(2,9);
   		}
   	());
-  	
   	var wcPurchaseID = $scope.wcPurchRNG;
-  	digitalData.page.purchaseID = wcPurchaseID;
-  	
+  	digitalData.page.purchaseID = wcPurchaseID;	
   	  console.log("Womens Crew Checkout Controller reporting for duty.");
 });
 
@@ -305,10 +279,8 @@ app.controller('wvCheckoutCtrl', function($scope) {
     	$scope.wvPurchRNG = 'wv' + Math.random().toString(36).substr(2,9);
   		}
   	());
-  	
   	var wvPurchaseID = $scope.wvPurchRNG;
-  	digitalData.page.purchaseID = wvPurchaseID;
-  	
+  	digitalData.page.purchaseID = wvPurchaseID;	
   	  console.log("Womens V Checkout Controller reporting for duty.");
 });
 	
