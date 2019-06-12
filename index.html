@@ -2,11 +2,15 @@
 <html lang="en" ng-app="storeWebApp">
 
   <head>
+
 	<!-- Meta-Information -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Teehugger Tees">
     <meta name="author" content="Teehugger Tees">
+    
+    <!-- testing custom meta-tags for data elements for test4. Added pagename to replace title -->
+    <meta name="pagename" content="{{pagename}}">
     <meta name="pagetype" content="{{pagetype}}">
 	<meta name="sitesection" content="{{sitesection}}">
 	<meta name="sitesubsection" content="{{sitesubsection}}">
@@ -22,20 +26,26 @@
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
+    <!-- Custom styles -->
     <link href="css/shop-homepage.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
     
-    <!-- Vendor: Angular, followed by our custom Javascripts -->
+    <!-- Angular, followed by custom JS -->
 	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular.min.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular-route.min.js"></script>
-		
-    <!-- Data Layer -->
+	
+	
+	<!-- Data Layer -->
+	
 	<script>
 	digitalData = { 
 		page:{
-			pageName: document.title,
+			pageName: document.pagename, // test; changed from document.title
 			destinationURL: encodeURIComponent(window.location.href),
+			
+			/* START - adding this for test1.
+			REMOVED LITERAL STRING VALUES FOR PARAMS BELOW FOR TEST 3*/
+			
 			pageType: document.pagetype, 
 			siteSection: document.sitesection,
 			siteSubsection: document.sitesubsection,
@@ -44,32 +54,94 @@
 			revenue: document.revenue,
 			productTotalRevenue: document.producttotalrevenue,
 			productTotalUnits: document.producttotalunits,
-			purchaseID: "", // 'PageCtrl' in $routeProvider sets to 'null' for non-checkout
+			purchaseID: "",
+			
+			/* END - test1 */
 		}
 	};
 	</script>
+	
+	<!-- 3/1/19: BEGIN Target pre-hiding snippet for async loading -->
+	<script>
+    	;(function(win, doc, style, timeout) {
+  			var STYLE_ID = 'at-body-style';
+  		function getParent() {
+    		return doc.getElementsByTagName('head')[0];
+  			}
+  		function addStyle(parent, id, def) {
+    		if (!parent) {
+      			return;
+    			}
+    			
+    	var style = doc.createElement('style');
+    			style.id = id;
+    			style.innerHTML = def;
+    			parent.appendChild(style);
+  			}
+  		function removeStyle(parent, id) {
+    		if (!parent) {
+      			return;
+    			}   			
+    		var style = doc.getElementById(id);
+    			if (!style) {
+      				return;
+    				}
+    		parent.removeChild(style);
+  			}
+  			
+  		addStyle(getParent(), STYLE_ID, style);
+  		setTimeout(function() {
+    		removeStyle(getParent(), STYLE_ID);
+  			}, 
+  		timeout);
+		}
+		
+		(window, document, "#heroimage {opacity: 0 !important}", 8000));
+	</script>
+	<!-- 3/1/19: END Target pre-hiding snippet for async loading-->
+
+
+
+	<!-- REMOVED ON 3/2/19; moved to Launch rule. Original: 3/1/19: Call at.js 2.0 library asynchronously...
+	<script src="js/at.js" async></script>
+	...END REMOVE ON 3/2/19. Original: 3/1/19: Call at.js 2.0 library asynchronously-->
+
 
 	<!-- Launch embed code -->
-	<script src="//assets.adobedtm.com/launch-EN1abd5a8792384701b09dcb2dfb58cc6a-development.min.js"></script>
+	<script src="//assets.adobedtm.com/launch-EN3600c549656049b8a45a6da84fb8a072-development.min.js"></script>
+
+
+
+
   </head>
 
   <body>
-  	<!-- Website Content-->
+  
+
+	<!-- Website Content-->
 	<div ng-include="'templates/shop-header.html'"></div>
   	<!-- before <div ng-view=""></div> -->
   	<!-- trying this: -->
   	<div id="app" ng-view></div>
 	<div ng-include="'templates/shop-footer.html'"></div>
-		
-    	<!-- Bootstrap core JavaScript -->
+	
+	
+	
+    <!-- Bootstrap core JavaScript -->
 	<script src="vendor/jquery/jquery.min.js"></script>
-    	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     
-	<!-- Website Javascript -->
+	<!-- Our Website Javascripts -->
 	<script src="js/shop-main.js"></script>
 	
-	<!-- Launch footer code -->
-	<script type="text/javascript">_satellite.pageBottom();</script>	
+	<!-- removing this temporarily...
+	<script type="text/javascript">_satellite.track('page-view');</script>
+	-->
+	
+	<!-- Launch footer code - removing temporarily...
+	<script type="text/javascript">_satellite.pageBottom();</script>
+	 -->
+	 
   </body>
 
 </html>
