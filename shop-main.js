@@ -177,7 +177,7 @@ app.run(['$rootScope', '$route', function($rootScope, $route) {
 			
 		digitalData.page.productTotalRevenue = $rootScope.productTotalRevenue;
 		digitalData.page.productTotalUnits = $rootScope.productTotalUnits;
-		
+	
 		
 		// Custom Event - Event View Start - triggers AT call
 		var evt = new CustomEvent('event-view-start');
