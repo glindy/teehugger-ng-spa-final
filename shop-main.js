@@ -125,6 +125,13 @@ app.config(['$routeProvider', function ($routeProvider) {
 		
 	.when("/new-account",  {templateUrl: "partials/new-account.html", controller: 'PageCtrl', title: 'welcome',
 		pageName: 'Welcome', pageType: 'Form', siteSection: 'Account', siteSubsection: 'Sign Up'})
+		
+	.when("/my-account-logout",  {templateUrl: "partials/my-account-logout.html", controller: 'PageCtrl', title: 'log out',
+		pageName: 'Log out', pageType: 'Form', siteSection: 'Account', siteSubsection: 'Menu'})
+		
+	.when("/my-account-cart",  {templateUrl: "partials/my-account-cart.html", controller: 'PageCtrl', title: 'cart',
+		pageName: 'Shopping Cart', pageType: 'Form', siteSection: 'Account', siteSubsection: 'Menu'})
+		
 	   
     /* else 404
     .otherwise({redirectTo: '#'});
