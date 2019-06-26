@@ -10,8 +10,17 @@ nav {
 	line-height: 25px;
 }
 
+.navbar-dark .navbar-toggler {
+	border-color: transparent;
+}
+
+.navbar-toggler:focus, .navbar-toggler:hover {
+	outline: 0;
+}
+
 .navbar-nav > li > .dropdown-menu {
 	background-color: #343a40!important;
+	border: none;
 }
 
 .dropdown-menu li {
@@ -25,7 +34,7 @@ nav {
 }
 
 .dropdown-menu > li > a:hover {
-	background color: ##708090;
+	background color: #708090;
     text-decoration: none;
 }
 
